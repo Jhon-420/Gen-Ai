@@ -1,4 +1,4 @@
-from gensim.models import KeyedVectors
+!pip install gensim
 from gensim.downloader import load
 
 word_vectors = load('glove-wiki-gigaword-100') 
