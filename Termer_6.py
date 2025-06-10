@@ -1,4 +1,4 @@
-# !pip install transformers
+!pip install transformers
 from transformers import pipeline
 
 sentiment_analyzer = pipeline("sentiment-analysis")
