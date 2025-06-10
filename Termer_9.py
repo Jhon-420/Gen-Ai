@@ -1,3 +1,4 @@
+!pip install langchain langchain-core langchain-community cohere pydantic wikipedia-api
 
 from langchain_community.llms import Cohere
 from langchain.prompts import PromptTemplate
