@@ -43,7 +43,7 @@ if __name__ == "__main__":
     institution_name = input("Enter the name of the institution: ")
     wiki_text = fetch_wikipedia_summary(institution_name)
 
-    llm = Cohere(cohere_api_key="cHb51fJ9urTonXJaiG6l7sOGUoMseDK6tMGz8mRN")
+    llm = Cohere(cohere_api_key="CVGjIIPbmzyRKxVm3GNhxPresBQuS3WH0QVIuK8o")
 
     prompt = PromptTemplate.from_template(prompt_template)
     chain = prompt | llm  
