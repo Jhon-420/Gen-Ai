@@ -1,3 +1,4 @@
+!pip install gensim
 from gensim.models import Word2Vec
 
 medical_data = [
