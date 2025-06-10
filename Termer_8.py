@@ -7,7 +7,7 @@ from google.colab import drive
 
 drive.mount('/content/drive')
 
-file_path = "/content/drive/MyDrive/sample_text.txt" 
+file_path = "/content/drive/MyDrive/8thsample_text.txt" 
 with open(file_path, "r") as file:
     text = file.read()
 
