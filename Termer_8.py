@@ -1,3 +1,5 @@
+!pip install langchain cohere
+
 from langchain.llms import Cohere
 from langchain.prompts import PromptTemplate
 from langchain import LLMChain
