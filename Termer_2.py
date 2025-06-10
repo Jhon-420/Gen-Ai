@@ -1,3 +1,5 @@
+!pip install scikit-learn matplotlib gensim numpy
+
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 import numpy as np
