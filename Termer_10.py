@@ -1,3 +1,7 @@
+!pip install langchain cohere faiss-cpu kagglehub pandas
+
+# api_key = "CVGjIIPbmzyRKxVm3GNhxPresBQuS3WH0QVIuK8o"
+
 import os
 import kagglehub
 import pandas as pd
