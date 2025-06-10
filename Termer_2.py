@@ -1,34 +1,22 @@
 import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
-from gensim.downloader import load
-import numpy as np 
+from sklearn.decomposition import PCA
+import numpy as np
+import gensim.downloader as api
 
-word_vectors = load('glove-wiki-gigaword-100')
+word_vectors = api.load('glove-wiki-gigaword-100')
 
-tech_words = ['computer', 'internet', 'software', 'hardware', 'network', 'data', 'cloud', 'robot', 'algorithm', 'technology']
+sports_words = ['football', 'soccer', 'tennis', 'basketball', 'cricket', 'goal', 'player', 'team', 'coach', 'score']
+sports_vectors = np.array([word_vectors[word] for word in sports_words])
 
-tech_words = [word for word in tech_words if word in word_vectors.key_to_index]
-vectors = np.array([word_vectors[word] for word in tech_words])
+pca = PCA(n_components=2)
+sports_2d = pca.fit_transform(sports_vectors)
+plt.figure(figsize=(8,6))
+for i, word in enumerate(sports_words):
+  plt.scatter(sports_2d[i,0], sports_2d[i,1])
+  plt.annotate(word, (sports_2d[i,0], sports_2d[i,1]))
+plt.title("PCA Visualization of Sports Words")
+plt.show()
 
-tsne = TSNE(n_components=2, random_state=42, perplexity=5) 
-
-reduced_vectors = tsne.fit_transform(vectors)
-
-plt.figure(figsize=(10, 6))
-for i, word in enumerate(tech_words):
-    plt.scatter(reduced_vectors[i, 0], reduced_vectors[i, 1], label=word)
-    plt.text(reduced_vectors[i, 0] + 0.02, reduced_vectors[i, 1] + 0.02, word, fontsize=12)
-    plt.title("t-SNE Visualization of Technology Words")
-    plt.xlabel("Dimension 1")
-    plt.ylabel("Dimension 2")
-    plt.legend()
-    plt.show()
-
-input_word = 'computer'
-if input_word in word_vectors.key_to_index:
-    similar_words = word_vectors.most_similar(input_word, topn=5)
-    print(f"5 words similar to '{input_word}':")
-    for word, similarity in similar_words:
-        print(f"{word} (similarity: {similarity:.2f})")
-else:
-    print(f"'{input_word}' is not in the vocabulary.")
+result=word_vectors.most_similar("man",topn=5 )
+for word, similarity in result:
+ print(f"{word}: {similarity:.4f}")
